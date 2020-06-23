@@ -1,6 +1,81 @@
+import carpas.*
+import marcas.*
+import jarras.*
+import personas.*
 
-test "testX" {
+test "testSegundaParte" {
 
 	assert.that(true)
 
+	const cachitoDeFranco = new Belga()
+	
+	const elArio = new Aleman() 
+	
+	const marek = new Checo()
+	
+	const pepeArgento = new Argentino()
+	
+	const paradorQuilmes = new Carpas()
+	
+	
+	const quilmes = new Rubias()
+	
+	quilmes.contLupulo(10)
+	quilmes.origen(argentina)
+	quilmes.graduacion(5)
+	
+	paradorQuilmes.vendeMarca(quilmes)
+	
+	assert.that(cachitoDeFranco.quiereEntrarACarpa(paradorQuilmes))
+	
+	paradorQuilmes.tieneBandaTradicional(true)
+	
+	assert.that(not cachitoDeFranco.quiereEntrarACarpa(paradorQuilmes))
+	
+	paradorQuilmes.limiteDeGente(3)
+	paradorQuilmes.tieneBandaTradicional(false)
+	
+	const jarra500 = new Jarras()
+	
+	jarra500.capacidad(0.5)
+	jarra500.marca(quilmes)
+	
+	cachitoDeFranco.compraJarra(jarra500)
+	cachitoDeFranco.peso(80)
+	cachitoDeFranco.nivelDeAguante(5)
+	
+	assert.that(paradorQuilmes.puedeEntrar(cachitoDeFranco))
+
+	elArio.compraJarra(jarra500)
+	elArio.peso(100)
+	elArio.nivelDeAguante(10)
+	
+	assert.that(elArio.puedeEntrar(paradorQuilmes))
+	
+	paradorQuilmes.entrarA(elArio)
+	
+	assert.that(not elArio.puedeEntrar(paradorQuilmes))
+	
+	paradorQuilmes.entrarA(cachitoDeFranco)
+	
+	assert.that( elArio.puedeEntrar(paradorQuilmes))
+	
+	paradorQuilmes.servirA(cachitoDeFranco,1)
+	
+	assert.equals(0 , paradorQuilmes.ebriosEmpedernidos() )
+	
+	paradorQuilmes.entrarA(marek)
+	paradorQuilmes.servirA(marek,1)
+	
+	assert.equals(1 , paradorQuilmes.ebriosEmpedernidos() )
+	
+	assert.that(not pepeArgento.puedeEntrar(paradorQuilmes))
+	
+	paradorQuilmes.limiteDeGente(4)
+	
+	paradorQuilmes.entrarA(pepeArgento)
+	
+	paradorQuilmes.servirA(pepeArgento,1)
+	
+	assert.that( pepeArgento.esPatriota() )
 }

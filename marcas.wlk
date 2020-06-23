@@ -1,3 +1,8 @@
+object argentina {}
+object alemania {}
+object repCheca {}
+object belga {} 
+
 class Rubias {
 	var property origen
 	var property contLupulo   // gramos por litro

@@ -1,6 +1,50 @@
+import carpas.*
+import marcas.*
+import jarras.*
+import personas.*
 
-test "testX" {
+test "testPrimeraParte" {
 
-	assert.that(true)
+	
+	
+	const jarra500 = new Jarras()
+	
+	jarra500.capacidad(0.5)
+	
+	const quilmes = new Rubias()
+	
+	quilmes.contLupulo(10)
+	quilmes.origen(argentina)
+	quilmes.graduacion(5)
+	
+	jarra500.marca(quilmes)
+	
+	
+	assert.equals( 0.5 * 0.05, jarra500.contAlchol())
+	
+	const cachitoDeFranco = new Belga()
+	
+	cachitoDeFranco.compraJarra(jarra500)
+	cachitoDeFranco.compraJarra(jarra500)
+	cachitoDeFranco.compraJarra(jarra500)
+	
+	assert.equals( 0.075 , cachitoDeFranco.alcoholIngerido() )
+	
+	cachitoDeFranco.peso(80)
+	
+	cachitoDeFranco.nivelDeAguante(5)
+	
+	assert.that( cachitoDeFranco.estaEbrio() )
+	
+	cachitoDeFranco.nivelDeAguante(7)
+	
+	assert.that( not cachitoDeFranco.estaEbrio() )
+	
+	assert.that(  cachitoDeFranco.leGustaLaBirra(quilmes) )
+	
+	const hofbrau = new Rojas()
+	
+	hofbrau.origen(belga)
+	
 
 }
